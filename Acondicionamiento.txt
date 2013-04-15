@@ -1,0 +1,72 @@
+E -> E or T
+	E0.cod = parchea(E1.cod, E1.lirf, E1.etq+2) || copia || ir_v(?) || desapila || T.cod
+	E1.etqh = E0.etqh
+	T.etqh = E1.etq + 3
+	E0.etq = T.etq
+	E0.lirv = E1.lirv ++ T.lirv ++ [E1.etq + 1]
+	E0.lirf = T.lirf
+
+E -> T
+	E.cod = T.cod
+	T.etqh = E.etqh
+	E.etq = T.etq
+	E.lirv = T.lirv
+	E.lirf = T.lirf
+
+Quitamos la recursión a izquierdas
+
+E -> T RE
+	RE.codh = T.cod
+	E.cod = RE.cod
+	T.etqh = E.etqh
+	RE.etqh = T.etq
+	E.etq = RE.etq
+	RE.lirvh = T.lirv
+	RE.lirvf = T.lir
+
+
+RE -> or T RE
+	RE1.codh = parchea(RE0.codh, RE0.lirfh, RE0.etqh+2) || copia || ir_v(?) || desapila || T.cod
+	RE0.cod = RE1.cod
+	T.etqh = RE0.etqh + 3
+	RE1.etqh = T.etq
+	RE0.etq = RE1.etq
+	RE1.lirvh = RE0.lirvh ++ T.lirv ++ [RE0.etqh + 1]
+	RE1.litfh = T.lirf
+	
+RE -> ɛ
+	RE.cod = RE.codh
+	RE.etq = RE.etqh
+	RE.lirv = RE.lirvh
+	RE.lirf = RE.lirfh
+	
+
+----------------------------------------------------------------------------------------------------------------
+
+T -> T and F
+	T0.cod = parchea(T1.cod, T1.lirv, T1.etq+2) ||
+		copia || ir_f(?) || desapila ||F.cod
+	T1.etqh = T0.etqh
+	F.etqh = T1.etq + 3
+	T0.etq = F.etq
+	T0.lirv = F.lirv
+	T0.lirf = T1.lirf ++ F.lirf ++ [T1.etq + 1]
+
+T -> F
+	T.cod = F.cod
+	F.etqh = T.etqh
+	T.etq = F.etq
+	T.lirv = F.lirv
+
+Quitamos la recursión a izquierdas
+
+T -> F RT
+
+RT -> and F RT
+	
+
+RT -> ɛ
+	RT.cod = RT.codh
+	RT.etq = RT.etqh
+	RT.lirv = RT.lirvh
+	RT.lirf = RT.lirfh
