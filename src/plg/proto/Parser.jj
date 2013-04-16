@@ -2,12 +2,14 @@ options { STATIC=false;}
 PARSER_BEGIN(Parser)
 package plg.proto;
 
+import java.util.*;
+
 class Parser{
 }
 
 PARSER_END(Parser)
   
-  // Reglas lexicas 
+  /* Reglas lexicas */
   SKIP:{<["\t"," ", "\r","\b","\n"]>}
   TOKEN:{<OR:"or">}
   TOKEN:{<AND:"and">}
@@ -22,12 +24,75 @@ PARSER_END(Parser)
   TOKEN:{<PCIERRE:")">}
   TOKEN:{<STRING:"\""(~["\""])*"\"">}
 
-  // Reglas sintacticas: habra que definirlas
- 
-void Sent() : {// variables locales
-              } 
-                   { 
-				     <IF> <THEN> <ELSE> <EOF> {System.out.println("Una accion");}  // produccion 1    
-                     |
-                     <TRUE> <EOF> {System.out.println("Otra accion");} Sent()          // produccion 2  			  
-				   } 	 
+/* Reglas sintacticas */
+void s(Attr a) : 
+	{
+		Attr ia;
+	}{
+		ia=Attr.create().etqh(0)
+		i(ia)
+		<EOF>
+		a.cod(ia.cod())
+	}
+
+void i(Attr a) :
+	{
+		Attr ea, ia1, ia2;
+	}{
+		<IF>
+		ea = Attr.copy(a)
+		e(ea)
+		<THEN>
+		ia1 = Attr.create().etqh(ea.etq() + 1)
+		i(ia1)
+		<ELSE>
+		ia2 = Attr.create().etqh(ia1.etq() + 1)
+		i(ia2)
+		<FI>
+		a.etq(ia2.etq())
+	|
+		<WRITE>
+		<STRING>
+		a.etq(a.etqh() + 2)
+	}
+	
+void e (Attr a) :
+	{
+		Attr ta, rea;
+	}{
+		ta = Attr.copy(a)
+		t(ta)
+		rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf())
+		re(rea)
+		a.cod(rea.cod())
+		a.etq(rea.etq())
+	}
+	
+void re (Attr a) :
+	{
+		
+	}{
+	
+	}
+	
+void t (Attr a) :
+	{
+	
+	}{
+	
+	}
+	
+void rt (Attr a) :
+	{
+	
+	}{
+	
+	}
+	
+void f (Attr a) :
+	{
+	
+	}{
+	
+	}
+	

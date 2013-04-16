@@ -22,7 +22,7 @@ E -> T RE
 	RE.etqh = T.etq
 	E.etq = RE.etq
 	RE.lirvh = T.lirv
-	RE.lirvf = T.lir
+	RE.lirvf = T.lirf
 
 
 RE -> or T RE
