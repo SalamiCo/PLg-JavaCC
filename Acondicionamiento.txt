@@ -44,8 +44,7 @@ RE -> ɛ
 ----------------------------------------------------------------------------------------------------------------
 
 T -> T and F
-	T0.cod = parchea(T1.cod, T1.lirv, T1.etq+2) ||
-		copia || ir_f(?) || desapila ||F.cod
+	T0.cod = parchea(T1.cod, T1.lirv, T1.etq+2) || copia || ir_f(?) || desapila || F.cod
 	T1.etqh = T0.etqh
 	F.etqh = T1.etq + 3
 	T0.etq = F.etq
@@ -61,9 +60,22 @@ T -> F
 Quitamos la recursión a izquierdas
 
 T -> F RT
+	RT.codh = F.cod
+	T.cod = RT.cod
+	F.etqh = T.etqh
+	RT.etqh = F.etqh
+	T.etq = RT.etq
+	RT.lirvh = F.lirv
+	RT.lirfh = F.lirf
 
 RT -> and F RT
-	
+	RT1.codh = parchea(RT0.codh, RT0.lirvh, RT0.etqh + 2) || copia || ir_f(?) || desapila || F.cod
+	RT0.cod = RT1.cod
+	F.etqh = RT0.etqh + 3
+	RT1.etqh = F.etq
+	RT0.etq = RT1.etqh
+	RT1.lirvh = RT0.lirv
+	RT1.lirvf = F.lirfh ++ RT0.lirfh ++ [F.etq + 1]
 
 RT -> ɛ
 	RT.cod = RT.codh
