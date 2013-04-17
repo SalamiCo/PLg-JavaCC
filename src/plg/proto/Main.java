@@ -12,7 +12,7 @@ public class Main {
         
         List<String> instrs = a.cod();
         for (int i = 0; i < instrs.size(); i++) {
-            System.out.printf("%3d: %s%n", i, instrs.get(i));
+            System.out.printf("%3d: %s%n", i+1, instrs.get(i));
         }
     }
 }
