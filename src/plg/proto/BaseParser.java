@@ -20,9 +20,9 @@ public abstract class BaseParser {
         return Collections.unmodifiableList(newCod);
     }
     
-    protected static final <T> List<T> concat ( List<T>... lists) {
+    protected static final <T> List<T> concat ( List<? extends T>... lists) {
         List<T> res = new ArrayList<T>();
-        for ( List<T> list : lists ) {
+        for ( List<? extends T> list : lists ) {
             res.addAll(list);
         }
         return Collections.unmodifiableList(res);

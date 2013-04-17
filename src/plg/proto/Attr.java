@@ -17,8 +17,10 @@ public final class Attr {
     private final List<Integer> lirf;
     
     private final List<Integer> lirfh;
-    
+
     private final List<String> cod;
+    
+    private final List<String> codh;
     
     private Attr () {
         lirv = new ArrayList<Integer>();
@@ -26,6 +28,7 @@ public final class Attr {
         lirf = new ArrayList<Integer>();
         lirfh = new ArrayList<Integer>();
         cod = new ArrayList<String>();
+        codh = new ArrayList<String>();
     }
     
     public static Attr create () {
@@ -167,6 +170,25 @@ public final class Attr {
     
     public Attr codAdd( String... cod ) {
         Collections.addAll(this.cod, cod);
+        return this;
+    }
+    
+    public Attr codh ( List<String> codh) {
+        return codhClear().codhAdd(codh);
+    }
+    
+    public Attr codhClear () {
+        this.codh.clear();
+        return this;
+    }
+    
+    public Attr codhAdd ( List<String> codh) {
+        this.codh.addAll(codh);
+        return this;
+    }
+    
+    public Attr codhAdd( String... codh ) {
+        Collections.addAll(this.codh, codh);
         return this;
     }
 }
