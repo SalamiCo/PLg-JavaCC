@@ -49,11 +49,11 @@ void i(Attr a) :
 		{ia2 = Attr.create().etqh(ia1.etq() + 1);}
 		i(ia2)
 		<FI>
-		{a.etq(ia2.etq()).cod(patch(ea.cod, concat(ea.lirv, ea.lirf), ea.etq)).codAdd(ir_f(ia1.etq +1)).codAdd(ia1.cod).codAdd(ir_a(ia2.etq)).codAdd(ia2.cod);}
+		{a.etq(ia2.etq()).cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq())).codAdd(ir_f(ia1.etq()+1)).codAdd(ia1.cod()).codAdd(ir_a(ia2.etq())).codAdd(ia2.cod());}
 	|
 		<WRITE>
 		<STRING>
-		{a.etq(a.etqh() + 2).codAdd(apila_str(string.lex), escribe);}
+		{a.etq(a.etqh() + 2).codAdd(instr("apila_str",string.lex), instr("escribe"));}
 	}
 	
 void e (Attr a) :
@@ -74,7 +74,7 @@ void re (Attr a) :
 		<OR>
 		{ta = Attr.create().etqh(a.etqh() + 3);}
 		t(ta)
-		{rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia", instr("ir_v", null), instr(desapila)).codhAdd(ta.cod());}
+		{rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia"), instr("ir_v", null), instr("desapila")).codhAdd(ta.cod());}
 		re(rea)
 		{a.cod(rea.cod()).etq(rea.etq());}
 	|
