@@ -75,7 +75,7 @@ RT -> and F RT
 	RT1.etqh = F.etq
 	RT0.etq = RT1.etqh
 	RT1.lirvh = F.lirv
-	RT1.lirvf = F.lirfh ++ RT0.lirfh ++ [F.etq + 1]
+	RT1.lirfh = F.lirfh ++ RT0.lirfh ++ [F.etq + 1]
 
 RT -> ɛ
 	RT.cod = RT.codh
