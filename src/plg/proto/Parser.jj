@@ -85,11 +85,11 @@ void t (Attr a) :
 	{
 		Attr fa, rta;
 	}{
-		fa = Attr.create().etqh(a.etqh())
+		{fa = Attr.create().etqh(a.etqh());}
 		f(fa)
-		rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf())
+		{rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf());}
 		rt(rta)
-		a.cod(rta.cod()).etq(rta.etq())
+		{a.cod(rta.cod()).etq(rta.etq());}
 	}
 	
 void rt (Attr a) :
@@ -97,13 +97,13 @@ void rt (Attr a) :
 		Attr fa, rta;
 	}{
 		<AND>
-		fa = Attr.create().etqh(a.etqh() + 3)
+		{fa = Attr.create().etqh(a.etqh() + 3);}
 		f(fa)
-		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod())
+		{rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());}
 		rt(rta)
-		a.cod(rta.cod()).etq(rta.etqh())
+		{a.cod(rta.cod()).etq(rta.etqh());}
 	|
-		a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf())
+		 {a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf());}
 	}
 	
 void f (Attr a) :
@@ -111,15 +111,15 @@ void f (Attr a) :
 		Attr ea;
 	}{
 		<TRUE>
-		a.codAdd(instr("apila_true")).etq(a.etqh() + 1).lirvClear().lirfClear()
+		{a.codAdd(instr("apila_true")).etq(a.etqh() + 1).lirvClear().lirfClear();}
 	|
 		<FALSE>
-		a.codAdd(instr("apila_false")).etq(a.etqh() + 1).lirvClear().lirfClear()
+		{a.codAdd(instr("apila_false")).etq(a.etqh() + 1).lirvClear().lirfClear();}
 	|
 		<PAP>
-		ea = Attr.create().etqh(a.etqh()).
+		{ea = Attr.create().etqh(a.etqh());}
 		e(ea)
 		<PCIERRE>
-		a.cod(ea.cod()).etq(ea.etq()).lirv(ea.lirv()).lirf(ea.lirf())
+		{a.cod(ea.cod()).etq(ea.etq()).lirv(ea.lirv()).lirf(ea.lirf());}
 	}
 	
