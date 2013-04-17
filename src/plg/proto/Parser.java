@@ -20,21 +20,26 @@ class Parser extends BaseParser implements ParserConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case IF:
       jj_consume_token(IF);
-                 ea = Attr.copy(a);
+                        ea = Attr.copy(a);
       e(ea);
       jj_consume_token(THEN);
-                 ia1 = Attr.create().etqh(ea.etq() + 1);
+                        ia1 = Attr.create().etqh(ea.etq() + 1);
       i(ia1);
       jj_consume_token(ELSE);
-                 ia2 = Attr.create().etqh(ia1.etq() + 1);
+                        ia2 = Attr.create().etqh(ia1.etq() + 1);
       i(ia2);
       jj_consume_token(FI);
-                 a.etq(ia2.etq()).cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq())).codAdd(instr("ir_f",ia1.etq()+1)).codAdd(ia1.cod()).codAdd(instr("ir_a",ia2.etq())).codAdd(ia2.cod());
+                        a.etq(ia2.etq())
+                                .cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq()))
+                                        .codAdd(instr("ir_f",ia1.etq()+1))
+                                        .codAdd(ia1.cod())
+                                        .codAdd(instr("ir_a",ia2.etq()))
+                                        .codAdd(ia2.cod());
       break;
     case WRITE:
       jj_consume_token(WRITE);
       t = jj_consume_token(STRING);
-                 a.etq(a.etqh() + 2).codAdd(instr("apila_str",t.getValue()), instr("escribe"));
+                        a.etq(a.etqh() + 2).codAdd(instr("apila_str",t.toString()), instr("escribe"));
       break;
     default:
       jj_la1[0] = jj_gen;
@@ -45,11 +50,11 @@ class Parser extends BaseParser implements ParserConstants {
 
   final public void e(Attr a) throws ParseException {
                 Attr ta, rea;
-                 ta = Attr.copy(a);
+                        ta = Attr.copy(a);
     t(ta);
-                 rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf()).codh(ta.cod());
+                        rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf()).codh(ta.cod());
     re(rea);
-                 a.cod(rea.cod()).etq(rea.etq());
+                        a.cod(rea.cod()).etq(rea.etq()).lirv(rea.lirv()).lirf(rea.lirf());
   }
 
   final public void re(Attr a) throws ParseException {
@@ -57,25 +62,33 @@ class Parser extends BaseParser implements ParserConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case OR:
       jj_consume_token(OR);
-                 ta = Attr.create().etqh(a.etqh() + 3);
+                        ta = Attr.create().etqh(a.etqh() + 3);
       t(ta);
-                 rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia"), instr("ir_v", null), instr("desapila")).codhAdd(ta.cod());
+                        rea = Attr.create()
+                                .etqh(ta.etq())
+                                .lirvh(a.lirvh())
+                                        .lirvhAdd(ta.lirv())
+                                        .lirvhAdd(a.etqh() + 2)
+                                .lirfh(ta.lirf())
+                                .codh(patch(a.codh(), a.lirvh(), a.etqh() + 2))
+                                        .codhAdd(instr("copia"), instr("ir_v", "?"), instr("desapila"))
+                                        .codhAdd(ta.cod());
       re(rea);
-                 a.cod(rea.cod()).etq(rea.etq());
+                        a.cod(rea.cod()).etq(rea.etq()).lirv(rea.lirv()).lirf(rea.lirf());
       break;
     default:
       jj_la1[1] = jj_gen;
-                 a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf());
+                        a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirfh());
     }
   }
 
   final public void t(Attr a) throws ParseException {
                 Attr fa, rta;
-                 fa = Attr.create().etqh(a.etqh());
+                        fa = Attr.create().etqh(a.etqh());
     f(fa);
-                 rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf());
+                        rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf());
     rt(rta);
-                 a.cod(rta.cod()).etq(rta.etq());
+                        a.cod(rta.cod()).etq(rta.etq()).lirv(rta.lirv()).lirf(rta.lirf());
   }
 
   final public void rt(Attr a) throws ParseException {
@@ -83,15 +96,23 @@ class Parser extends BaseParser implements ParserConstants {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case AND:
       jj_consume_token(AND);
-                 fa = Attr.create().etqh(a.etqh() + 3);
+                        fa = Attr.create().etqh(a.etqh() + 3);
       f(fa);
-                 rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(a.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(a.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());
+                        rta = Attr.create()
+                                .etqh(fa.etq())
+                                .lirvh(fa.lirv())
+                                .lirfh(a.lirf())
+                                        .lirfhAdd(fa.lirf())
+                                        .lirfhAdd(a.etq() + 2)
+                                .codh(patch(a.codh(), a.lirvh(), a.etqh() + 2))
+                                        .codhAdd(instr("copia"), instr("ir_f", "?"), instr("desapila"))
+                                        .codhAdd(fa.cod());
       rt(rta);
-                 a.cod(rta.cod()).etq(rta.etqh());
+                        a.cod(rta.cod()).etq(rta.etqh()).lirv(rta.lirv()).lirf(rta.lirf());
       break;
     default:
       jj_la1[2] = jj_gen;
-                  a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf());
+                  a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirfh());
     }
   }
 

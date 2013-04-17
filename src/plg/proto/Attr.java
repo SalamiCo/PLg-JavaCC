@@ -36,8 +36,11 @@ public final class Attr {
     }
     
     public static Attr copy ( Attr attr) {
-        return Attr.create().etq(attr.etq()).etqh(attr.etqh()).lirv(attr.lirv()).lirvh(attr.lirvh()).lirf(attr.lirf())
-            .lirfh(attr.lirfh());
+        return Attr.create()
+            .etq(attr.etq()).etqh(attr.etqh())
+            .lirv(attr.lirv()).lirvh(attr.lirvh())
+            .lirf(attr.lirf()).lirfh(attr.lirfh())
+            .cod(attr.cod()).codh(attr.codh());
     }
     
     public int etq () {
