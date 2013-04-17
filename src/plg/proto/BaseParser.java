@@ -12,9 +12,11 @@ public abstract class BaseParser {
         List<String> newCod = new ArrayList<String>(cod);
         
         for (Integer i : lir) {
-            String patched = patch(cod.get(i), etq);
-            newCod.set(i, patched);
-            System.out.printf("> patch(%d, %s, %d) ==> %s%n", i, cod.get(i), etq, newCod.get(i));
+            int ai = i - etq + cod.size();
+            
+            String patched = patch(cod.get(ai), etq);
+            newCod.set(ai, patched);
+            System.out.printf("> patch(%d, %s, %d) ==> %s%n", ai, cod.get(ai), etq, newCod.get(ai));
         }
 
         System.out.printf("%s%n", newCod);

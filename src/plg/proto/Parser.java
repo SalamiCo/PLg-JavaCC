@@ -8,7 +8,7 @@ class Parser extends BaseParser implements ParserConstants {
 /* Reglas sintacticas */
   final public void s(Attr a) throws ParseException {
                 Attr ia;
-                 ia = Attr.create().etqh(0);
+                 ia = Attr.create().etqh(1);
     i(ia);
     jj_consume_token(0);
                  a.cod(ia.cod());
@@ -68,7 +68,7 @@ class Parser extends BaseParser implements ParserConstants {
                                 .etqh(ta.etq())
                                 .lirvh(a.lirvh())
                                         .lirvhAdd(ta.lirv())
-                                        .lirvhAdd(a.etqh() + 2)
+                                        .lirvhAdd(a.etqh() + 1)
                                 .lirfh(ta.lirf())
                                 .codh(patch(a.codh(), a.lirvh(), a.etqh() + 2))
                                         .codhAdd(instr("copia"), instr("ir_v", "?"), instr("desapila"))
@@ -86,7 +86,7 @@ class Parser extends BaseParser implements ParserConstants {
                 Attr fa, rta;
                         fa = Attr.create().etqh(a.etqh());
     f(fa);
-                        rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf());
+                        rta = Attr.create().codh(fa.cod()).etqh(fa.etq()).lirvh(fa.lirv()).lirfh(fa.lirf());
     rt(rta);
                         a.cod(rta.cod()).etq(rta.etq()).lirv(rta.lirv()).lirf(rta.lirf());
   }
@@ -101,18 +101,18 @@ class Parser extends BaseParser implements ParserConstants {
                         rta = Attr.create()
                                 .etqh(fa.etq())
                                 .lirvh(fa.lirv())
-                                .lirfh(a.lirf())
+                                .lirfh(a.lirfh())
                                         .lirfhAdd(fa.lirf())
-                                        .lirfhAdd(a.etq() + 2)
+                                        .lirfhAdd(a.etqh() + 1)
                                 .codh(patch(a.codh(), a.lirvh(), a.etqh() + 2))
                                         .codhAdd(instr("copia"), instr("ir_f", "?"), instr("desapila"))
                                         .codhAdd(fa.cod());
       rt(rta);
-                        a.cod(rta.cod()).etq(rta.etqh()).lirv(rta.lirv()).lirf(rta.lirf());
+                        a.cod(rta.cod()).etq(rta.etq()).lirv(rta.lirv()).lirf(rta.lirf());
       break;
     default:
       jj_la1[2] = jj_gen;
-                  a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirfh());
+                        a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirfh());
     }
   }
 
