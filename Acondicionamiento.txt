@@ -23,6 +23,8 @@ E -> T RE
 	E.etq = RE.etq
 	RE.lirvh = T.lirv
 	RE.lirvf = T.lirf
+	E.lirv = RE.lirv
+	E.lirf = RE.lirf
 
 
 RE -> or T RE
@@ -67,6 +69,8 @@ T -> F RT
 	T.etq = RT.etq
 	RT.lirvh = F.lirv
 	RT.lirfh = F.lirf
+	T.lirv = RT.lirv
+	T.lirf = RT.lirf
 
 RT -> and F RT
 	RT1.codh = parchea(RT0.codh, RT0.lirvh, RT0.etqh + 2) || copia || ir_f(?) || desapila || F.cod
