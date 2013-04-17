@@ -28,7 +28,7 @@ class Parser extends BaseParser implements ParserConstants {
                  ia2 = Attr.create().etqh(ia1.etq() + 1);
       i(ia2);
       jj_consume_token(FI);
-                 a.etq(ia2.etq()).cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq())).codAdd(ir_f(ia1.etq()+1)).codAdd(ia1.cod()).codAdd(ir_a(ia2.etq())).codAdd(ia2.cod());
+                 a.etq(ia2.etq()).cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq())).codAdd(instr("ir_f",ia1.etq()+1)).codAdd(ia1.cod()).codAdd(instr("ir_a",ia2.etq())).codAdd(ia2.cod());
       break;
     case WRITE:
       jj_consume_token(WRITE);
@@ -62,7 +62,7 @@ class Parser extends BaseParser implements ParserConstants {
                         .lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1)
                         .lirfh(ta.lirf())
                         .codh(patch(a.codh(), a.lirvh(), a.lirfh()))
-                                .codhAdd(instr("copia"), instr("ir_v", null), instr(desapila)).codhAdd(ta.cod());
+                                .codhAdd(instr("copia"), instr("ir_v", null), instr("desapila")).codhAdd(ta.cod());
       re(rea);
                  a.cod(rea.cod()).etq(rea.etq());
       break;
@@ -88,7 +88,7 @@ class Parser extends BaseParser implements ParserConstants {
       jj_consume_token(AND);
                  fa = Attr.create().etqh(a.etqh() + 3);
       f(fa);
-                 rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());
+                 rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(a.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(a.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());
       rt(rta);
                  a.cod(rta.cod()).etq(rta.etqh());
       break;
