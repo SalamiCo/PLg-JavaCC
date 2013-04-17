@@ -29,10 +29,10 @@ void s(Attr a) :
 	{
 		Attr ia;
 	}{
-		ia=Attr.create().etqh(0)
+		{ia = Attr.create().etqh(0);}
 		i(ia)
 		<EOF>
-		a.cod(ia.cod())
+		{a.cod(ia.cod());}
 	}
 
 void i(Attr a) :
@@ -40,33 +40,31 @@ void i(Attr a) :
 		Attr ea, ia1, ia2;
 	}{
 		<IF>
-		ea = Attr.copy(a)
+		{ea = Attr.copy(a);}
 		e(ea)
 		<THEN>
-		ia1 = Attr.create().etqh(ea.etq() + 1)
+		{ia1 = Attr.create().etqh(ea.etq() + 1);}
 		i(ia1)
 		<ELSE>
-		ia2 = Attr.create().etqh(ia1.etq() + 1)
+		{ia2 = Attr.create().etqh(ia1.etq() + 1);}
 		i(ia2)
 		<FI>
-		a.etq(ia2.etq())
-		a.cod(patch(ea.cod, concat(ea.lirv, ea.lirf), ea.etq)).codAdd(ir_f(ia1.etq +1)).codAdd(ia1.cod).codAdd(ir_a(ia2.etq)).codAdd(ia2.cod)
+		{a.etq(ia2.etq()).cod(patch(ea.cod, concat(ea.lirv, ea.lirf), ea.etq)).codAdd(ir_f(ia1.etq +1)).codAdd(ia1.cod).codAdd(ir_a(ia2.etq)).codAdd(ia2.cod);}
 	|
 		<WRITE>
 		<STRING>
-		a.etq(a.etqh() + 2)
-		a.codAdd(apila_str(string.lex), escribe)
+		{a.etq(a.etqh() + 2).codAdd(apila_str(string.lex), escribe);}
 	}
 	
 void e (Attr a) :
 	{
 		Attr ta, rea;
 	}{
-		ta = Attr.copy(a)
+		{ta = Attr.copy(a);}
 		t(ta)
-		rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf()).codh(ta.cod())
+		{rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf()).codh(ta.cod());}
 		re(rea)
-		a.cod(rea.cod()).etq(rea.etq())
+		{a.cod(rea.cod()).etq(rea.etq());}
 	}
 	
 void re (Attr a) :
@@ -74,13 +72,13 @@ void re (Attr a) :
 		Attr ta, rea;
 	}{
 		<OR>
-		ta = Attr.create().etqh(a.etqh() + 3)
+		{ta = Attr.create().etqh(a.etqh() + 3);}
 		t(ta)
-		rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia", instr("ir_v", null), instr(desapila)).codhAdd(ta.cod())
+		{rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia", instr("ir_v", null), instr(desapila)).codhAdd(ta.cod());}
 		re(rea)
-		a.cod(rea.cod()).etq(rea.etq())
+		{a.cod(rea.cod()).etq(rea.etq());}
 	|
-		a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf())
+		{a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf());}
 	}
 	
 void t (Attr a) :
