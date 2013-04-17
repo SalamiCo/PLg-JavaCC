@@ -4,7 +4,7 @@ package plg.proto;
 
 import java.util.*;
 
-class Parser{
+class Parser extends BaseParser{
 }
 
 PARSER_END(Parser)
@@ -50,10 +50,12 @@ void i(Attr a) :
 		i(ia2)
 		<FI>
 		a.etq(ia2.etq())
+		a.cod(patch(ea.cod, concat(ea.lirv, ea.lirf), ea.etq)).codAdd(ir_f(ia1.etq +1)).codAdd(ia1.cod).codAdd(ir_a(ia2.etq)).codAdd(ia2.cod)
 	|
 		<WRITE>
 		<STRING>
 		a.etq(a.etqh() + 2)
+		a.codAdd(apila_str(string.lex), escribe)
 	}
 	
 void e (Attr a) :
@@ -74,7 +76,7 @@ void re (Attr a) :
 		<OR>
 		ta = Attr.create().etqh(a.etqh() + 3)
 		t(ta)
-		rea = Attr.create().etqh(ta.etq()).lirvh(TODO).lirfh(ta.lirf())
+		rea = Attr.create().etqh(ta.etq()).lirvh(TODO).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(copia, ir_v(?), desapila).codhAdd(ta.cod())
 		re(rea)
 		a.cod(rea.cod()).etq(rea.etq())
 	|
@@ -99,7 +101,7 @@ void rt (Attr a) :
 		<AND>
 		fa = Attr.create().etqh(a.etqh() + 3)
 		f(fa)
-		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfh(TODO)
+		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfh(TODO).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(copia, ir_f(?), desapila).codhAdd(fa.cod())
 		rt(rta)
 		a.cod(rta.cod()).etq(rta.etqh())
 	|
@@ -111,10 +113,12 @@ void f (Attr a) :
 		Attr ea;
 	}{
 		<TRUE>
-		a.cod(TODO).etq(a.etqh() + 1).lirv(Collections.emptyList()).lirf(Collections.emptyList())
+		a.codAdd(apila_true()).etq(a.etqh() + 1).lirvClear().lirfClear()
+		//TODO F.cod = apila_true()
 	|
 		<FALSE>
-		a.cod(TODO).etq(a.etqh() + 1).lirv(Collections.emptyList()).lirf(Collections.emptyList())
+		a.codAdd(apila_false()).etq(a.etqh() + 1).lirvClear().lirfClear()
+		//TODO F.cod = apila_true()
 	|
 		<PAP>
 		ea = Attr.create().etqh(a.etqh()).
