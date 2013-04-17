@@ -76,7 +76,7 @@ void re (Attr a) :
 		<OR>
 		ta = Attr.create().etqh(a.etqh() + 3)
 		t(ta)
-		rea = Attr.create().etqh(ta.etq()).lirvh(TODO).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(copia, ir_v(?), desapila).codhAdd(ta.cod())
+		rea = Attr.create().etqh(ta.etq()).lirvhAdd(a.lirvh()).lirvhAdd(ta.lirv()).lirvhAdd(a.etqh() + 1).lirfh(ta.lirf()).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia", instr("ir_v", null), instr(desapila)).codhAdd(ta.cod())
 		re(rea)
 		a.cod(rea.cod()).etq(rea.etq())
 	|
@@ -101,7 +101,7 @@ void rt (Attr a) :
 		<AND>
 		fa = Attr.create().etqh(a.etqh() + 3)
 		f(fa)
-		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfh(TODO).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(copia, ir_f(?), desapila).codhAdd(fa.cod())
+		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod())
 		rt(rta)
 		a.cod(rta.cod()).etq(rta.etqh())
 	|
@@ -113,12 +113,10 @@ void f (Attr a) :
 		Attr ea;
 	}{
 		<TRUE>
-		a.codAdd(apila_true()).etq(a.etqh() + 1).lirvClear().lirfClear()
-		//TODO F.cod = apila_true()
+		a.codAdd(instr("apila_true")).etq(a.etqh() + 1).lirvClear().lirfClear()
 	|
 		<FALSE>
-		a.codAdd(apila_false()).etq(a.etqh() + 1).lirvClear().lirfClear()
-		//TODO F.cod = apila_true()
+		a.codAdd(instr("apila_false")).etq(a.etqh() + 1).lirvClear().lirfClear()
 	|
 		<PAP>
 		ea = Attr.create().etqh(a.etqh()).
