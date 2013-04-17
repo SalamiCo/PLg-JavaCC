@@ -38,6 +38,7 @@ void s(Attr a) :
 void i(Attr a) :
 	{
 		Attr ea, ia1, ia2;
+		Token t;
 	}{
 		<IF>
 		{ea = Attr.copy(a);}
@@ -52,8 +53,8 @@ void i(Attr a) :
 		{a.etq(ia2.etq()).cod(patch(ea.cod(), concat(ea.lirv(), ea.lirf()), ea.etq())).codAdd(instr("ir_f",ia1.etq()+1)).codAdd(ia1.cod()).codAdd(instr("ir_a",ia2.etq())).codAdd(ia2.cod());}
 	|
 		<WRITE>
-		<STRING>
-		{a.etq(a.etqh() + 2).codAdd(instr("apila_str",string.lex), instr("escribe"));}
+		t = <STRING>
+		{a.etq(a.etqh() + 2).codAdd(instr("apila_str",t.getValue()), instr("escribe"));}
 	}
 	
 void e (Attr a) :
