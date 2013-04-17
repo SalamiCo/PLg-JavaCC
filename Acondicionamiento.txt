@@ -35,6 +35,8 @@ RE -> or T RE
 	RE0.etq = RE1.etq
 	RE1.lirvh = RE0.lirvh ++ T.lirv ++ [RE0.etqh + 1]
 	RE1.litfh = T.lirf
+	RE0.lirv = RE1.lirv
+	RE0.lirf = RE1.lirf	
 	
 RE -> ɛ
 	RE.cod = RE.codh
@@ -65,7 +67,7 @@ T -> F RT
 	RT.codh = F.cod
 	T.cod = RT.cod
 	F.etqh = T.etqh
-	RT.etqh = F.etqh
+	RT.etqh = F.etq
 	T.etq = RT.etq
 	RT.lirvh = F.lirv
 	RT.lirfh = F.lirf
@@ -77,9 +79,11 @@ RT -> and F RT
 	RT0.cod = RT1.cod
 	F.etqh = RT0.etqh + 3
 	RT1.etqh = F.etq
-	RT0.etq = RT1.etqh
+	RT0.etq = RT1.etq
 	RT1.lirvh = F.lirv
-	RT1.lirfh = F.lirfh ++ RT0.lirfh ++ [F.etq + 1]
+	RT1.lirfh = RT0.lirfh ++ F.lirf ++ [RT0.etqh + 1]
+	RT0.lirv = RT1.lirv
+	RT0.lirf = RT1.lirf
 
 RT -> ɛ
 	RT.cod = RT.codh
