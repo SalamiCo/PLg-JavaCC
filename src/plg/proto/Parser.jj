@@ -103,7 +103,7 @@ void rt (Attr a) :
 		<AND>
 		{fa = Attr.create().etqh(a.etqh() + 3);}
 		f(fa)
-		{rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.lirfh())).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());}
+		{rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfhAdd(rta.lirf()).lirfhAdd(fa.lirf()).lirfhAdd(ta.etq() + 1).codh(patch(a.codh(), a.lirvh(), a.etqh() + 2)).codhAdd(instr("copia"), instr("ir_f", null), instr("desapila")).codhAdd(fa.cod());}
 		rt(rta)
 		{a.cod(rta.cod()).etq(rta.etqh());}
 	|
