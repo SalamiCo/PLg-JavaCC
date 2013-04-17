@@ -62,37 +62,64 @@ void e (Attr a) :
 	}{
 		ta = Attr.copy(a)
 		t(ta)
-		rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf())
+		rea = Attr.create().etqh(ta.etq()).lirvh(ta.lirv()).lirfh(ta.lirf()).codh(ta.cod())
 		re(rea)
-		a.cod(rea.cod())
-		a.etq(rea.etq())
+		a.cod(rea.cod()).etq(rea.etq())
 	}
 	
 void re (Attr a) :
 	{
-		
+		Attr ta, rea;
 	}{
-	
+		<OR>
+		ta = Attr.create().etqh(a.etqh() + 3)
+		t(ta)
+		rea = Attr.create().etqh(ta.etq()).lirvh(TODO).lirfh(ta.lirf())
+		re(rea)
+		a.cod(rea.cod()).etq(rea.etq())
+	|
+		a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf())
 	}
 	
 void t (Attr a) :
 	{
-	
+		Attr fa, rta;
 	}{
-	
+		fa = Attr.create().etqh(a.etqh())
+		f(fa)
+		rta = Attr.create().codh(fa.cod()).etqh(fa.etqh()).lirvh(fa.lirv()).lirfh(fa.lirf())
+		rt(rta)
+		a.cod(rta.cod()).etq(rta.etq())
 	}
 	
 void rt (Attr a) :
 	{
-	
+		Attr fa, rta;
 	}{
-	
+		<AND>
+		fa = Attr.create().etqh(a.etqh() + 3)
+		f(fa)
+		rta = Attr.create().etqh(fa.etq()).lirvh(fa.lirv()).lirfh(TODO)
+		rt(rta)
+		a.cod(rta.cod()).etq(rta.etqh())
+	|
+		a.cod(a.codh()).etq(a.etqh()).lirv(a.lirvh()).lirf(a.lirf())
 	}
 	
 void f (Attr a) :
 	{
-	
+		Attr ea;
 	}{
-	
+		<TRUE>
+		a.cod(TODO).etq(a.etqh() + 1).lirv(Collections.emptyList()).lirf(Collections.emptyList())
+	|
+		<FALSE>
+		a.cod(TODO).etq(a.etqh() + 1).lirv(Collections.emptyList()).lirf(Collections.emptyList())
+	|
+		<PAP>
+		ea = Attr.create().etqh(a.etqh()).
+		e(ea)
+		<PCIERRE>
+		a.cod(ea.cod()).etq(ea.etq()).lirv(ea.lirv()).lirf(ea.lirf())
 	}
 	

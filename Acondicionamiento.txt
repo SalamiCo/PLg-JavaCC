@@ -74,7 +74,7 @@ RT -> and F RT
 	F.etqh = RT0.etqh + 3
 	RT1.etqh = F.etq
 	RT0.etq = RT1.etqh
-	RT1.lirvh = RT0.lirv
+	RT1.lirvh = F.lirv
 	RT1.lirvf = F.lirfh ++ RT0.lirfh ++ [F.etq + 1]
 
 RT -> ɛ
@@ -82,3 +82,4 @@ RT -> ɛ
 	RT.etq = RT.etqh
 	RT.lirv = RT.lirvh
 	RT.lirf = RT.lirfh
+	
