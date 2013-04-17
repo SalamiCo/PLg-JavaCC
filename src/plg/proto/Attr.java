@@ -68,6 +68,10 @@ public final class Attr {
         return Collections.unmodifiableList(cod);
     }
     
+    public List<String> codh () {
+        return Collections.unmodifiableList(codh);
+    }
+    
     public Attr etq ( int etq) {
         this.etq = etq;
         return this;
