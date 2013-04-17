@@ -70,7 +70,7 @@ class Parser extends BaseParser implements ParserConstants {
                                         .lirvhAdd(ta.lirv())
                                         .lirvhAdd(a.etqh() + 1)
                                 .lirfh(ta.lirf())
-                                .codh(patch(a.codh(), a.lirvh(), a.etqh() + 2))
+                                .codh(patch(a.codh(), a.lirfh(), a.etqh() + 2))
                                         .codhAdd(instr("copia"), instr("ir_v", "?"), instr("desapila"))
                                         .codhAdd(ta.cod());
       re(rea);

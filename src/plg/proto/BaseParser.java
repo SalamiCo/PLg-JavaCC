@@ -11,12 +11,13 @@ public abstract class BaseParser {
         System.out.printf("%npatch(%s, %s, %d) %n", cod, lir, etq);
         List<String> newCod = new ArrayList<String>(cod);
         
-        for (Integer i : lir) {
-            int ai = i - etq + cod.size();
-            
-            String patched = patch(cod.get(ai), etq);
-            newCod.set(ai, patched);
-            System.out.printf("> patch(%d, %s, %d) ==> %s%n", ai, cod.get(ai), etq, newCod.get(ai));
+        // NOTA: Después de intentar realizar el parcheo mediante la lista lir de 3 y 4
+        // maneras diferentes, he llegado a la conclusión de que realizar un parcheo a lo
+        // bruto da mejor resultado. Corrijo: Da ALGÚN resultado.
+        for (int i = 0; i < cod.size(); i++) {
+            String patched = patch(cod.get(i), etq);
+            newCod.set(i, patched);
+            System.out.printf("> patch(%d, %s, %d) ==> %s%n", i, cod.get(i), etq, newCod.get(i));
         }
 
         System.out.printf("%s%n", newCod);
